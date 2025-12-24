@@ -1,3 +1,6 @@
+# OGhidraEX - Previous version with native GhidraMCP
+
+
 # OGhidra - AI-Powered Reverse Engineering with Ghidra
 
 OGhidra bridges Large Language Models (LLMs) via Ollama with the Ghidra reverse engineering platform, enabling AI-driven binary analysis through natural language. Interact with Ghidra using conversational queries and automate complex reverse engineering workflows.
