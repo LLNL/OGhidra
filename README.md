@@ -59,9 +59,7 @@ Before installing OGhidra, you need to set up three core components: **Ghidra**,
 
 ### System Requirements
 
-**Python Version**:
-- **Recommended**: Python 3.12 or Python 3.13 
-- **Check your version**: Run `python --version` or `python3 --version`
+You need to have [uv installed](https://docs.astral.sh/uv/getting-started/installation/).
 
 **Hardware Requirements**:
 - **RAM**: 
@@ -207,17 +205,6 @@ Ollama is the local LLM runtime that powers OGhidra's AI capabilities.
 
 Now that prerequisites are installed, set up OGhidra itself.
 
-### Step 0: Verify Python Version
-
-Ensure you have Python 3.12 or later installed:
-
-```bash
-python --version
-# or
-python3 --version
-```
-
-
 ### Step 1: Clone the Repository
 
 ```bash
@@ -225,27 +212,13 @@ git clone https://github.com/llnl/OGhidra
 cd OGhidra
 ```
 
-### Step 2: Create Python Virtual Environment (Recommended)
+### Step 2: Install Python Dependencies
 
 ```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate it
-# On Windows:
-.\venv\Scripts\activate
-
-# On Linux/Mac:
-source venv/bin/activate
+uv sync
 ```
 
-### Step 3: Install Python Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### Step 4: Configure Environment Variables
+### Step 3: Configure Environment Variables
 
 1. **Edit `.env` file** with your preferred text editor and configure (or leave as is):
 
@@ -288,7 +261,7 @@ pip install -r requirements.txt
    OLLAMA_REQUEST_DELAY=0.0
    ```
 
-### Step 5: Verify Installation
+### Step 4: Verify Installation
 
 1. **Ensure Ghidra is running** with a project open and GhidraMCP plugin enabled
 
@@ -299,7 +272,7 @@ pip install -r requirements.txt
 
 3. **Launch OGhidra CLI** in interactive mode to test:
    ```bash
-   python main.py --interactive
+   uv run main.py --interactive
    ```
 
 4. **Run health check**:
@@ -321,7 +294,7 @@ The graphical interface provides the most intuitive experience with visual feedb
 
 **Launch the GUI**:
 ```bash
-python main.py --ui
+uv run main.py --ui
 ```
 
 #### GUI Interface Overview
@@ -372,7 +345,7 @@ For advanced users, scripting, and automation workflows.
 
 **Launch CLI Mode**:
 ```bash
-python main.py --interactive
+uv run main.py --interactive
 ```
 
 #### Available Commands
@@ -605,13 +578,6 @@ This architecture prevents AI hallucination and ensures reliable tool execution.
 
 ### Common Issues
 
-**Issue**: "Python version incompatible" or dependency installation failures
-- **Solution**: Verify Python version with `python --version`
-- Minimum required: Python 3.10
-- Recommended: Python 3.12 or 3.13
-- If using older Python (3.8, 3.9), upgrade to 3.12+
-- Create a fresh virtual environment after upgrading
-
 **Issue**: "Cannot connect to Ollama server"
 - **Solution**: Ensure Ollama is running (`ollama serve`)
 - Verify URL in `.env` matches Ollama server: `OLLAMA_API_URL=http://localhost:11434`
@@ -645,7 +611,7 @@ Always start troubleshooting with a health check:
 
 **CLI**:
 ```bash
-python main.py --interactive
+uv run main.py --interactive
 # Then type:
 health
 ```
